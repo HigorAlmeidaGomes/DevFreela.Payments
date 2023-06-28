@@ -1,3 +1,4 @@
+using DevFreela.Payments.API.Consumers;
 using DevFreela.Payments.API.Services.Interface;
 using DevFreela.Payments.API.Services.Service;
 using Microsoft.AspNetCore.Builder;
@@ -29,6 +30,7 @@ namespace DevFreela.Payments.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IPaymentServices, PaymentServices>();
+            services.AddHostedService<ProcessPaymentConsumer>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
